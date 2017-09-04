@@ -108,8 +108,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-
-                    android:background=""
                     android:padding="10dp"
                     android:text="想看"
                     android:textSize="14sp"
@@ -119,7 +117,6 @@
                     android:layout_height="wrap_content" />
                 <TextView
                     android:layout_marginLeft="30dp"
-                    android:background=""
                     android:padding="10dp"
                     android:text="查看详情"
                     android:textSize="14sp"

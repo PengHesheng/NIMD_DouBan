@@ -1,6 +1,4 @@
-package com.example.a14512.nimd_douban.modules.music.model;
-
-import com.example.a14512.nimd_douban.modules.music.model.entity.Music;
+package com.example.a14512.nimd_douban.modules.music.model.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;

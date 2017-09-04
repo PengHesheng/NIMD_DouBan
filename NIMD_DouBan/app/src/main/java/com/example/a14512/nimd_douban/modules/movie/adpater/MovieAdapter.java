@@ -125,7 +125,7 @@ public class MovieAdapter extends RecyclerView.Adapter{
     }
 
     private void ActionStart(String id, View view) {
-        Intent intent = new Intent(view.getContext(), MovieActivity.class);
+        Intent intent = new Intent(view.getContext(), MovieDetailActivity.class);
         intent.putExtra("movie", id);
         view.getContext().startActivity(intent);
     }*/

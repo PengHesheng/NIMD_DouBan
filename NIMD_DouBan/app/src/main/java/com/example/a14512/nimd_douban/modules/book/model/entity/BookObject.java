@@ -1,6 +1,5 @@
-package com.example.a14512.nimd_douban.modules.book.model;
+package com.example.a14512.nimd_douban.modules.book.model.entity;
 
-import com.example.a14512.nimd_douban.modules.book.model.entity.Book;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

@@ -2,6 +2,7 @@
 
 <android.support.design.widget.AppBarLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/appbarlayout"
     android:layout_width="match_parent"
@@ -11,30 +12,45 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:layout_scrollFlags="enterAlways"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:title=" "
+        android:background="#0da9ec"
+        android:theme="@style/MyThemeBlue"
+        app:popupTheme="@style/MyThemeBlue"
         >
-        <TextView
-            android:id="@+id/tv_title"
-            android:textSize="17sp"
-            android:textColor="#fff"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-        <TextView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            android:id="@+id/tv_right"
-            android:textSize="17sp"
-            android:textColor="#fff"
-            android:gravity="center_horizontal"
-            android:layout_gravity="right"
-            android:layout_marginRight="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/img_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_centerVertical="true"
+                tool:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                tool:text="这是标题"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_right"
+                android:textSize="17sp"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                tool:text="完成"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
 </android.support.design.widget.AppBarLayout>

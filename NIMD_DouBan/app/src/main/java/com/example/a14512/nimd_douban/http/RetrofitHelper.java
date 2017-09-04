@@ -2,13 +2,13 @@ package com.example.a14512.nimd_douban.http;
 
 import com.example.a14512.nimd_douban.http.RxUtil.RetrofitServiceManager;
 import com.example.a14512.nimd_douban.http.RxUtil.RxUtil;
-import com.example.a14512.nimd_douban.modules.book.model.BookObject;
+import com.example.a14512.nimd_douban.modules.book.model.entity.BookObject;
 import com.example.a14512.nimd_douban.modules.book.model.entity.Book;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.Movie;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.MovieDetail;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.USMovie;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.USMovieSubject;
-import com.example.a14512.nimd_douban.modules.music.model.MusicSubject;
+import com.example.a14512.nimd_douban.modules.music.model.entity.MusicSubject;
 import com.example.a14512.nimd_douban.modules.music.model.entity.Music;
 
 import java.util.ArrayList;
