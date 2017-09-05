@@ -28,7 +28,6 @@
                 android:layout_marginLeft="8dp"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/back"/>
-
             <TextView
                 android:id="@+id/tv_title"
                 android:textSize="18sp"
