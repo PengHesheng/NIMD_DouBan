@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_centerVertical="true"
-                tool:src="@mipmap/ic_launcher"/>
+                tool:src="@drawable/back"/>
 
             <TextView
                 android:id="@+id/tv_title"
