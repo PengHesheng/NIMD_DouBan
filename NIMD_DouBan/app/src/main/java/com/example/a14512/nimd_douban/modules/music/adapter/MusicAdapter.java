@@ -51,7 +51,9 @@ public class MusicAdapter extends RecyclerView.Adapter {
             final MusicHolder musicHolder = new MusicHolder(view);
             musicHolder.musicView.setOnClickListener(v -> {
                 int position = musicHolder.getAdapterPosition();
-
+                Music music = new Music();
+                music = musics.get(position);
+                startActivity(music, v);
             });
             return musicHolder;
         }
@@ -66,9 +68,9 @@ public class MusicAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private void startActivity(String id, View v) {
+    private void startActivity(Music music, View v) {
         Intent intent = new Intent(v.getContext(), MusicDetailActivity.class);
-        intent.putExtra("id", id);
+        intent.putExtra("music", music);
         v.getContext().startActivity(intent);
     }
 

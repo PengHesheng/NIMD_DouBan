@@ -2,7 +2,7 @@ package com.example.a14512.nimd_douban.http;
 
 import com.example.a14512.nimd_douban.modules.book.model.entity.Book;
 import com.example.a14512.nimd_douban.modules.book.model.entity.BookObject;
-import com.example.a14512.nimd_douban.modules.movie.model.MovieSubject;
+import com.example.a14512.nimd_douban.modules.movie.model.entity.MovieSubject;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.Movie;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.MovieDetail;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.USMovieSubject;

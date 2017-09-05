@@ -5,5 +5,5 @@ package com.example.a14512.nimd_douban.modules.music.presenter;
  */
 
 public interface MusicPresenter {
-    void getMusicFromNet();
+    void searchMusic();
 }

@@ -1,4 +1,4 @@
-package com.example.a14512.nimd_douban.modules.movie.model;
+package com.example.a14512.nimd_douban.modules.movie.model.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -57,11 +57,9 @@ public class BookAdaper extends RecyclerView.Adapter {
         }
     }
 
-    private void startActivity(String title, String url, String imageUrl, View v) {
+    private void startActivity(Book book, View v) {
         Intent intent = new Intent(v.getContext(), BookDetailActivity.class);
-        intent.putExtra("url", url);
-        intent.putExtra("imageUrl", imageUrl);
-        intent.putExtra("title", title);
+        intent.putExtra("book", book);
         v.getContext().startActivity(intent);
     }
 
