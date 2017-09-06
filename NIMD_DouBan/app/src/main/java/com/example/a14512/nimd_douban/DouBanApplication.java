@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.a14512.nimd_douban.base.Global;
+import com.example.a14512.nimd_douban.http.RetrofitHelper;
 import com.example.a14512.nimd_douban.utils.DouBanContext;
 
 /**
@@ -28,7 +29,15 @@ public class DouBanApplication extends android.app.Application {
         super.onCreate();
         Global.init(this);
         mContext = getApplicationContext();
-
+        RetrofitHelper.getInstance();
+        /**
+         * 如果存在SD卡则将缓存写入SD卡,否则写入手机内存
+         */
+        if (getApplicationContext().getExternalCacheDir() != null) {
+            cacheDir = getApplicationContext().getExternalCacheDir().toString();
+        } else {
+            cacheDir = getApplicationContext().getCacheDir().toString();
+        }
     }
 
 

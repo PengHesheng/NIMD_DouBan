@@ -12,4 +12,6 @@ public interface MusicView {
     String getSearchTag();
 
     void setAdapter(ArrayList<Music> musics);
+
+    void setMusic(Music music);
 }

@@ -19,6 +19,7 @@ public class MusicPresenterImp implements MusicPresenter {
     private MusicView musicView;
     private MusicModelImp musicModel;
     private ArrayList<Music> musics = new ArrayList<>();
+    private Music music;
 
     public MusicPresenterImp(MusicView musicView) {
         this.musicView = musicView;
@@ -51,7 +52,33 @@ public class MusicPresenterImp implements MusicPresenter {
                 }
             }
         };
-        musicModel.getMusicFromNet(observer, tag, "");
+        musicModel.searchMusic(observer, tag, "");
+    }
 
+    @Override
+    public void getMusicDetail(String id) {
+        music = new Music();
+        Observer<Music> observer = new Observer<Music>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Music value) {
+                music = value;
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtil.show("网络请求异常!");
+            }
+
+            @Override
+            public void onComplete() {
+                musicView.setMusic(music);
+            }
+        };
+        musicModel.getMusicDetail(observer, id);
     }
 }

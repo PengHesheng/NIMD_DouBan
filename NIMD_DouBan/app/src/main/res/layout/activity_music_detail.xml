@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:background="#2323"
+                android:id="@+id/bg_music_layout"
                 android:layout_width="match_parent"
                 android:layout_height="170dp">
 

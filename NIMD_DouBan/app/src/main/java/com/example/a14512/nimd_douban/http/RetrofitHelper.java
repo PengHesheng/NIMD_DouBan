@@ -73,7 +73,7 @@ public class RetrofitHelper {
 
     public Observable<MovieDetail> getMovieDetail(String id) {
         return mApiService.getMovieDetail(id)
-                .compose(RxUtil.rxSchedulerHelper());
+                .compose(RxUtil.rxSchedulerHelper()).map(movieDetail -> movieDetail);
     }
 
     /**

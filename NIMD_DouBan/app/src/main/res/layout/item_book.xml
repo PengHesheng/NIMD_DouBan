@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical" android:layout_width="match_parent"
-              android:id="@+id/ll_item_view"
-              android:layout_height="wrap_content">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:background="@android:color/white"
+        android:layout_margin="8dp"
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/iv_music"
+            android:id="@+id/iv_book"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="centerCrop"/>
 
         <TextView
-            android:id="@+id/tv_music_name"
+            android:id="@+id/tv_book_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="1dp"
-            android:layout_toRightOf="@+id/iv_music"
+            android:layout_toRightOf="@+id/iv_book"
             android:text="min"
             android:textColor="#000"
             android:textSize="13sp"/>
 
         <TextView
-            android:id="@+id/tv_music_grade"
+            android:id="@+id/tv_book_grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_music_name"
+            android:layout_below="@+id/tv_book_name"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="3dp"
-            android:layout_toRightOf="@+id/iv_music"
+            android:layout_toRightOf="@+id/iv_book"
             android:text="评分8.9"
             android:textColor="#000"
             android:textSize="12sp"/>
 
         <TextView
-            android:id="@+id/tv_music_art"
+            android:id="@+id/tv_book_art"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_music_grade"
+            android:layout_below="@+id/tv_book_grade"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="3dp"
-            android:layout_toRightOf="@+id/iv_music"
+            android:layout_toRightOf="@+id/iv_book"
             android:text="xxx"
             android:textColor="#000"
             android:textSize="12sp"/>
     </RelativeLayout>
-
 </LinearLayout>

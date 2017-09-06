@@ -1,63 +1,70 @@
 package com.example.a14512.nimd_douban.modules.movie.model.entity;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by HP on 2017/5/13.
  */
 
-public class MovieDetail {
-    public String title;
-    public Rate rating;
-    public String year;
-    public MovieImage images;
-    public List<String> countries;
-    public List<String> genres;
-    public int collect_count;  //看过人数
-    public String summary;  //简介
-    public int ratings_count;  //评分人数
+public class MovieDetail implements Serializable {
+
     /**
-     * rating : {"max":10,"average":7.4,"stars":"40","min":0}
-     * reviews_count : 299
-     * wish_count : 15413
+     * rating : {"max":10,"average":7.7,"stars":"40","min":0}
+     * reviews_count : 150
+     * wish_count : 46074
      * douban_site :
-     * alt : https://movie.douban.com/subject/1764796/
-     * id : 1764796
-     * mobile_url : https://movie.douban.com/subject/1764796/mobile
+     * year : 2017
+     * images : {"small":"https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2497756471.jpg","large":"https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2497756471.jpg","medium":"https://img3.doubanio.com/view/movie_poster_cover/spst/public/p2497756471.jpg"}
+     * alt : https://movie.douban.com/subject/24753477/
+     * id : 24753477
+     * mobile_url : https://movie.douban.com/subject/24753477/mobile
+     * title : 蜘蛛侠：英雄归来
      * do_count : null
-     * share_url : https://m.douban.com/movie/subject/1764796
+     * share_url : https://m.douban.com/movie/subject/24753477
      * seasons_count : null
-     * schedule_url :
+     * schedule_url : https://movie.douban.com/subject/24753477/cinema/
      * episodes_count : null
-     * casts : [{"alt":"https://movie.douban.com/celebrity/1054395/","avatars":{"small":"https://img1.doubanio.com/img/celebrity/small/51597.jpg","large":"https://img1.doubanio.com/img/celebrity/large/51597.jpg","medium":"https://img1.doubanio.com/img/celebrity/medium/51597.jpg"},"name":"伊利亚·伍德","id":"1054395"},{"alt":"https://movie.douban.com/celebrity/1016673/","avatars":{"small":"https://img3.doubanio.com/img/celebrity/small/3996.jpg","large":"https://img3.doubanio.com/img/celebrity/large/3996.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/3996.jpg"},"name":"詹妮弗·康纳利","id":"1016673"},{"alt":"https://movie.douban.com/celebrity/1017907/","avatars":{"small":"https://img3.doubanio.com/img/celebrity/small/55994.jpg","large":"https://img3.doubanio.com/img/celebrity/large/55994.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/55994.jpg"},"name":"约翰·C·赖利","id":"1017907"},{"alt":"https://movie.douban.com/celebrity/1036321/","avatars":{"small":"https://img3.doubanio.com/img/celebrity/small/42033.jpg","large":"https://img3.doubanio.com/img/celebrity/large/42033.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/42033.jpg"},"name":"克里斯托弗·普卢默","id":"1036321"}]
+     * countries : ["美国"]
+     * genres : ["动作","科幻","冒险"]
+     * collect_count : 10264
+     * casts : [{"alt":"https://movie.douban.com/celebrity/1325351/","avatars":{"small":"https://img1.doubanio.com/img/celebrity/small/1467942867.09.jpg","large":"https://img1.doubanio.com/img/celebrity/large/1467942867.09.jpg","medium":"https://img1.doubanio.com/img/celebrity/medium/1467942867.09.jpg"},"name":"汤姆·霍兰德","id":"1325351"},{"alt":"https://movie.douban.com/celebrity/1016681/","avatars":{"small":"https://img1.doubanio.com/img/celebrity/small/56339.jpg","large":"https://img1.doubanio.com/img/celebrity/large/56339.jpg","medium":"https://img1.doubanio.com/img/celebrity/medium/56339.jpg"},"name":"小罗伯特·唐尼","id":"1016681"},{"alt":"https://movie.douban.com/celebrity/1047974/","avatars":{"small":"https://img3.doubanio.com/img/celebrity/small/231.jpg","large":"https://img3.doubanio.com/img/celebrity/large/231.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/231.jpg"},"name":"玛丽莎·托梅","id":"1047974"},{"alt":"https://movie.douban.com/celebrity/1049486/","avatars":{"small":"https://img3.doubanio.com/img/celebrity/small/1420615848.64.jpg","large":"https://img3.doubanio.com/img/celebrity/large/1420615848.64.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/1420615848.64.jpg"},"name":"迈克尔·基顿","id":"1049486"}]
      * current_season : null
-     * original_title : 9
+     * original_title : Spider-Man: Homecoming
+     * summary : 影片讲述了蜘蛛侠在钢铁侠“导师”的帮助下对抗终极反派秃鹰的故事。经历了美队3中的复联内战后，彼得·帕克（汤姆·霍兰德 Tom Holland 饰）回到普通高中生活，并受到钢铁侠托尼·斯塔克（小罗伯特·唐尼 Robert Downey Jr. 饰）的指导与暗中关注。一心想要证明自己能力的小蜘蛛，在一场银行劫案后遭遇了拥有外星终极武器的反派秃鹰（迈克尔·基顿 Michael Keaton 饰），却因一时心急而使万千生命陷入危机。此时，钢铁侠却意外收回了赠予蜘蛛侠的无敌战衣，这对于遭遇重创的蜘蛛侠无异于雪上加霜。他能否证明自己的能力，成功保卫家园成为悬念，而他“获得复联入场券”的梦想，也看似遥遥无期……
      * subtype : movie
-     * directors : [{"alt":"https://movie.douban.com/celebrity/1276787/","avatars":{"small":"https://img3.doubanio.com/img/celebrity/small/1351678808.44.jpg","large":"https://img3.doubanio.com/img/celebrity/large/1351678808.44.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/1351678808.44.jpg"},"name":"申·阿克","id":"1276787"}]
-     * comments_count : 11807
-     * aka : ["9：末世决战","九","Number 9","机器人9号"]
+     * directors : [{"alt":"https://movie.douban.com/celebrity/1350194/","avatars":{"small":"https://img3.doubanio.com/img/celebrity/small/1435142487.62.jpg","large":"https://img3.doubanio.com/img/celebrity/large/1435142487.62.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/1435142487.62.jpg"},"name":"乔·沃茨","id":"1350194"}]
+     * comments_count : 4498
+     * ratings_count : 9487
+     * aka : ["蜘蛛侠：强势回归(港)","蜘蛛人：返校日(台)","新蜘蛛侠","蜘蛛侠：归来","蜘蛛侠：回家","蜘蛛侠：返校季","蜘蛛侠：返校节","蜘蛛侠：归乡","蜘蛛侠：新复仇者","The Amazing Spider-Man 3","Spider-Man: The New Avenger","Spiderman"]
      */
 
-    @SerializedName("rating")
-    private RatingBean ratingX;
+    private RatingBean rating;
     private int reviews_count;
     private int wish_count;
     private String douban_site;
+    private String year;
+    private ImagesBean images;
     private String alt;
     private String id;
     private String mobile_url;
+    private String title;
     private Object do_count;
     private String share_url;
     private Object seasons_count;
     private String schedule_url;
     private Object episodes_count;
+    private int collect_count;
     private Object current_season;
     private String original_title;
+    private String summary;
     private String subtype;
     private int comments_count;
+    private int ratings_count;
+    private List<String> countries;
+    private List<String> genres;
     private List<CastsBean> casts;
     private List<DirectorsBean> directors;
     private List<String> aka;
@@ -67,12 +74,12 @@ public class MovieDetail {
         return new Gson().fromJson(str, MovieDetail.class);
     }
 
-    public RatingBean getRatingX() {
-        return ratingX;
+    public RatingBean getRating() {
+        return rating;
     }
 
-    public void setRatingX(RatingBean ratingX) {
-        this.ratingX = ratingX;
+    public void setRating(RatingBean rating) {
+        this.rating = rating;
     }
 
     public int getReviews_count() {
@@ -99,6 +106,22 @@ public class MovieDetail {
         this.douban_site = douban_site;
     }
 
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public ImagesBean getImages() {
+        return images;
+    }
+
+    public void setImages(ImagesBean images) {
+        this.images = images;
+    }
+
     public String getAlt() {
         return alt;
     }
@@ -121,6 +144,14 @@ public class MovieDetail {
 
     public void setMobile_url(String mobile_url) {
         this.mobile_url = mobile_url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Object getDo_count() {
@@ -163,6 +194,14 @@ public class MovieDetail {
         this.episodes_count = episodes_count;
     }
 
+    public int getCollect_count() {
+        return collect_count;
+    }
+
+    public void setCollect_count(int collect_count) {
+        this.collect_count = collect_count;
+    }
+
     public Object getCurrent_season() {
         return current_season;
     }
@@ -179,6 +218,14 @@ public class MovieDetail {
         this.original_title = original_title;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     public String getSubtype() {
         return subtype;
     }
@@ -193,6 +240,30 @@ public class MovieDetail {
 
     public void setComments_count(int comments_count) {
         this.comments_count = comments_count;
+    }
+
+    public int getRatings_count() {
+        return ratings_count;
+    }
+
+    public void setRatings_count(int ratings_count) {
+        this.ratings_count = ratings_count;
+    }
+
+    public List<String> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(List<String> countries) {
+        this.countries = countries;
+    }
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
     }
 
     public List<CastsBean> getCasts() {
@@ -222,7 +293,7 @@ public class MovieDetail {
     public static class RatingBean {
         /**
          * max : 10
-         * average : 7.4
+         * average : 7.7
          * stars : 40
          * min : 0
          */
@@ -270,16 +341,57 @@ public class MovieDetail {
         }
     }
 
+    public static class ImagesBean {
+        /**
+         * small : https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2497756471.jpg
+         * large : https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2497756471.jpg
+         * medium : https://img3.doubanio.com/view/movie_poster_cover/spst/public/p2497756471.jpg
+         */
+
+        private String small;
+        private String large;
+        private String medium;
+
+        public static ImagesBean objectFromData(String str) {
+
+            return new Gson().fromJson(str, ImagesBean.class);
+        }
+
+        public String getSmall() {
+            return small;
+        }
+
+        public void setSmall(String small) {
+            this.small = small;
+        }
+
+        public String getLarge() {
+            return large;
+        }
+
+        public void setLarge(String large) {
+            this.large = large;
+        }
+
+        public String getMedium() {
+            return medium;
+        }
+
+        public void setMedium(String medium) {
+            this.medium = medium;
+        }
+    }
+
     public static class CastsBean {
         /**
-         * alt : https://movie.douban.com/celebrity/1054395/
-         * avatars : {"small":"https://img1.doubanio.com/img/celebrity/small/51597.jpg","large":"https://img1.doubanio.com/img/celebrity/large/51597.jpg","medium":"https://img1.doubanio.com/img/celebrity/medium/51597.jpg"}
-         * name : 伊利亚·伍德
-         * id : 1054395
+         * alt : https://movie.douban.com/celebrity/1325351/
+         * avatars : {"small":"https://img1.doubanio.com/img/celebrity/small/1467942867.09.jpg","large":"https://img1.doubanio.com/img/celebrity/large/1467942867.09.jpg","medium":"https://img1.doubanio.com/img/celebrity/medium/1467942867.09.jpg"}
+         * name : 汤姆·霍兰德
+         * id : 1325351
          */
 
         private String alt;
-        private MovieImage avatars;
+        private AvatarsBean avatars;
         private String name;
         private String id;
 
@@ -296,11 +408,11 @@ public class MovieDetail {
             this.alt = alt;
         }
 
-        public MovieImage getAvatars() {
+        public AvatarsBean getAvatars() {
             return avatars;
         }
 
-        public void setAvatars(MovieImage avatars) {
+        public void setAvatars(AvatarsBean avatars) {
             this.avatars = avatars;
         }
 
@@ -319,18 +431,59 @@ public class MovieDetail {
         public void setId(String id) {
             this.id = id;
         }
+
+        public static class AvatarsBean {
+            /**
+             * small : https://img1.doubanio.com/img/celebrity/small/1467942867.09.jpg
+             * large : https://img1.doubanio.com/img/celebrity/large/1467942867.09.jpg
+             * medium : https://img1.doubanio.com/img/celebrity/medium/1467942867.09.jpg
+             */
+
+            private String small;
+            private String large;
+            private String medium;
+
+            public static AvatarsBean objectFromData(String str) {
+
+                return new Gson().fromJson(str, AvatarsBean.class);
+            }
+
+            public String getSmall() {
+                return small;
+            }
+
+            public void setSmall(String small) {
+                this.small = small;
+            }
+
+            public String getLarge() {
+                return large;
+            }
+
+            public void setLarge(String large) {
+                this.large = large;
+            }
+
+            public String getMedium() {
+                return medium;
+            }
+
+            public void setMedium(String medium) {
+                this.medium = medium;
+            }
+        }
     }
 
     public static class DirectorsBean {
         /**
-         * alt : https://movie.douban.com/celebrity/1276787/
-         * avatars : {"small":"https://img3.doubanio.com/img/celebrity/small/1351678808.44.jpg","large":"https://img3.doubanio.com/img/celebrity/large/1351678808.44.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/1351678808.44.jpg"}
-         * name : 申·阿克
-         * id : 1276787
+         * alt : https://movie.douban.com/celebrity/1350194/
+         * avatars : {"small":"https://img3.doubanio.com/img/celebrity/small/1435142487.62.jpg","large":"https://img3.doubanio.com/img/celebrity/large/1435142487.62.jpg","medium":"https://img3.doubanio.com/img/celebrity/medium/1435142487.62.jpg"}
+         * name : 乔·沃茨
+         * id : 1350194
          */
 
         private String alt;
-        private MovieImage avatars;
+        private AvatarsBeanX avatars;
         private String name;
         private String id;
 
@@ -347,11 +500,11 @@ public class MovieDetail {
             this.alt = alt;
         }
 
-        public MovieImage getAvatars() {
+        public AvatarsBeanX getAvatars() {
             return avatars;
         }
 
-        public void setAvatars(MovieImage avatars) {
+        public void setAvatars(AvatarsBeanX avatars) {
             this.avatars = avatars;
         }
 
@@ -370,22 +523,46 @@ public class MovieDetail {
         public void setId(String id) {
             this.id = id;
         }
+
+        public static class AvatarsBeanX {
+            /**
+             * small : https://img3.doubanio.com/img/celebrity/small/1435142487.62.jpg
+             * large : https://img3.doubanio.com/img/celebrity/large/1435142487.62.jpg
+             * medium : https://img3.doubanio.com/img/celebrity/medium/1435142487.62.jpg
+             */
+
+            private String small;
+            private String large;
+            private String medium;
+
+            public static AvatarsBeanX objectFromData(String str) {
+
+                return new Gson().fromJson(str, AvatarsBeanX.class);
+            }
+
+            public String getSmall() {
+                return small;
+            }
+
+            public void setSmall(String small) {
+                this.small = small;
+            }
+
+            public String getLarge() {
+                return large;
+            }
+
+            public void setLarge(String large) {
+                this.large = large;
+            }
+
+            public String getMedium() {
+                return medium;
+            }
+
+            public void setMedium(String medium) {
+                this.medium = medium;
+            }
+        }
     }
-
-
-    public class MovieImage {
-        public String small;
-        public String large;
-        public String medium;
-    }
-
-    public class Rate {
-        public int max;
-        public int average;
-        public String stars;
-        public int min;
-    }
-
-
-
 }

@@ -6,4 +6,6 @@ package com.example.a14512.nimd_douban.modules.book.presenter;
 
 public interface BookPresenter {
     void searchBook();
+
+    void getBookDetail(String id);
 }

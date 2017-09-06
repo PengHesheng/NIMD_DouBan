@@ -13,7 +13,12 @@ import io.reactivex.Observer;
 
 public class BookModelImp implements BookModel {
     @Override
-    public void getBookFromNet(Observer<ArrayList<Book>> observer, String q, String tag) {
+    public void searchBook(Observer<ArrayList<Book>> observer, String q, String tag) {
         RetrofitHelper.getInstance().searchBook(q, tag).subscribe(observer);
+    }
+
+    @Override
+    public void getBookDetail(Observer<Book> observer, String id) {
+        RetrofitHelper.getInstance().getBookDetial(id).subscribe(observer);
     }
 }

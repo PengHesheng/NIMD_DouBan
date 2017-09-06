@@ -11,5 +11,7 @@ import io.reactivex.Observer;
  */
 
 public interface BookModel {
-    void getBookFromNet(Observer<ArrayList<Book>> observer, String q, String tag);
+    void searchBook(Observer<ArrayList<Book>> observer, String q, String tag);
+
+    void getBookDetail(Observer<Book> observer, String id);
 }

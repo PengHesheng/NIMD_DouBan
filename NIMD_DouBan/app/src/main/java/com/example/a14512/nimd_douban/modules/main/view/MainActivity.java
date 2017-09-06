@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.a14512.nimd_douban.R;
 import com.example.a14512.nimd_douban.base.BaseActivity;
 import com.example.a14512.nimd_douban.modules.book.view.BookFragment;
@@ -18,13 +19,14 @@ import com.example.a14512.nimd_douban.modules.movie.view.MovieFragment;
 import com.example.a14512.nimd_douban.modules.music.view.MusicFragment;
 import com.example.a14512.nimd_douban.utils.customView.SlidingView;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private ImageView img_toolbar;
     private TextView tv_title;
     private AppBarLayout appbarlayout;
     private TextView tv_movie, tv_book, tv_music;
-    private LinearLayout activity_main_id;
 
     private SlidingView slidingView;
     private MovieFragment movieFragment;
@@ -48,10 +50,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         tv_movie = (TextView) findViewById(R.id.tv_movie);
         tv_book = (TextView) findViewById(R.id.tv_book);
         tv_music = (TextView) findViewById(R.id.tv_music);
-        activity_main_id = (LinearLayout) findViewById(R.id.activity_main_id);
+        LinearLayout activity_main_id = (LinearLayout) findViewById(R.id.activity_main_id);
         slidingView = (SlidingView) findViewById(R.id.sliding_view);
 
-        img_toolbar.setImageResource(R.mipmap.ic_launcher_round);
+        Glide.with(this).load(R.mipmap.icon)
+                .bitmapTransform(new CropCircleTransformation(this))
+                .into(img_toolbar);
         tv_title.setText(tv_movie.getText());
         //初始化字体颜色
         tv_movie.setTextColor(this.getResources().getColor(R.color.mainToolbar));

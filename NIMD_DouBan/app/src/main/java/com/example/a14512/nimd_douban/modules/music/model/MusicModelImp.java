@@ -14,7 +14,12 @@ import io.reactivex.Observer;
 public class MusicModelImp implements MusicModel {
 
     @Override
-    public void getMusicFromNet(Observer<ArrayList<Music>> observer, String q, String tag) {
+    public void searchMusic(Observer<ArrayList<Music>> observer, String q, String tag) {
         RetrofitHelper.getInstance().searchMusic(q, tag).subscribe(observer);
+    }
+
+    @Override
+    public void getMusicDetail(Observer<Music> observer, String id) {
+        RetrofitHelper.getInstance().getMusicDetail(id).subscribe(observer);
     }
 }

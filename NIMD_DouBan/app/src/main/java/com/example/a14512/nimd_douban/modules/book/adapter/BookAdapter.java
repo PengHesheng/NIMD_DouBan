@@ -6,9 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.a14512.nimd_douban.R;
 import com.example.a14512.nimd_douban.modules.book.model.entity.Book;
 import com.example.a14512.nimd_douban.modules.book.view.BookDetailActivity;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
  * Created by 14512 on 2017/9/5.
  */
 
-public class BookAdaper extends RecyclerView.Adapter {
+public class BookAdapter extends RecyclerView.Adapter {
 
     private Context context;
     private ArrayList<Book> books;
@@ -44,7 +46,15 @@ public class BookAdaper extends RecyclerView.Adapter {
         if (viewType == Last_Item_state) {
             return new BottomHolder(LayoutInflater.from(context).inflate(R.layout.item_recycler_bottom, null));
         } else {
-            return null;
+            View view = LayoutInflater.from(context).inflate(R.layout.item_book, null);
+            final BookHolder bookHolder = new BookHolder(view);
+            bookHolder.bookView.setOnClickListener(v -> {
+                int position = bookHolder.getAdapterPosition();
+                Book book = new Book();
+                book = books.get(position);
+                startActivity(book.getId(), v);
+            });
+            return bookHolder;
         }
     }
 
@@ -57,9 +67,9 @@ public class BookAdaper extends RecyclerView.Adapter {
         }
     }
 
-    private void startActivity(Book book, View v) {
+    private void startActivity(String id, View v) {
         Intent intent = new Intent(v.getContext(), BookDetailActivity.class);
-        intent.putExtra("book", book);
+        intent.putExtra("id", id);
         v.getContext().startActivity(intent);
     }
 
@@ -82,7 +92,14 @@ public class BookAdaper extends RecyclerView.Adapter {
                     break;
             }
         } else if (holder instanceof BookHolder) {
-
+            BookHolder bookHolder = (BookHolder) holder;
+            Book book = books.get(position);
+            if (book != null) {
+                Glide.with(context).load(book.getImages().getSmall()).into(bookHolder.ivBook);
+                bookHolder.bookName.setText(book.getTitle());
+                bookHolder.bookGrade.setText(book.getRating().getAverage());
+                bookHolder.bookArt.setText(book.getAlt());
+            }
         }
     }
 
@@ -92,9 +109,18 @@ public class BookAdaper extends RecyclerView.Adapter {
     }
 
     private class BookHolder extends RecyclerView.ViewHolder {
-
+        View bookView;
+        ImageView ivBook;
+        TextView bookName;
+        TextView bookGrade;
+        TextView bookArt;
         public BookHolder(View itemView) {
             super(itemView);
+            bookView = itemView;
+            ivBook = (ImageView) itemView.findViewById(R.id.iv_book);
+            bookName = (TextView) itemView.findViewById(R.id.tv_book_name);
+            bookGrade = (TextView) itemView.findViewById(R.id.tv_book_grade);
+            bookArt = (TextView) itemView.findViewById(R.id.tv_book_art);
         }
     }
 

@@ -19,6 +19,7 @@ public class BookPresenterImp implements BookPresenter {
     private BookView bookView;
     private BookModelImp bookModel;
     private ArrayList<Book> books;
+    private Book book;
 
     public BookPresenterImp(BookView bookView) {
         this.bookView = bookView;
@@ -52,7 +53,34 @@ public class BookPresenterImp implements BookPresenter {
                 }
             }
         };
-        bookModel.getBookFromNet(observer, tag, "");
-
+        bookModel.searchBook(observer, tag, "");
     }
+
+    @Override
+    public void getBookDetail(String id) {
+        book = new Book();
+        Observer<Book> observer = new Observer<Book>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Book value) {
+                book = value;
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtil.show("网络请求异常!");
+            }
+
+            @Override
+            public void onComplete() {
+                bookView.setBook(book);
+            }
+        };
+        bookModel.getBookDetail(observer, id);
+    }
+
 }

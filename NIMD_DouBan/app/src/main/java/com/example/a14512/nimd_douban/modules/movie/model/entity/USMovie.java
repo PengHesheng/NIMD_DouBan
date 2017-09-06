@@ -46,6 +46,12 @@ public class USMovie implements Serializable {
         this.rank = rank;
     }
 
+    public Movie getSubject() {
+        return subject;
+    }
 
+    public void setSubject(Movie movie) {
+        this.subject = movie;
+    }
 
 }

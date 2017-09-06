@@ -11,5 +11,7 @@ import io.reactivex.Observer;
  */
 
 public interface MusicModel {
-    void getMusicFromNet(Observer<ArrayList<Music>> observer, String q, String tag);
+    void searchMusic(Observer<ArrayList<Music>> observer, String q, String tag);
+
+    void getMusicDetail(Observer<Music> observer, String id);
 }

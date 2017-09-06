@@ -46,14 +46,13 @@ public class MusicAdapter extends RecyclerView.Adapter {
         if (viewType == Last_Item_state) {
             return new BottomHolder(LayoutInflater.from(context).inflate(R.layout.item_recycler_bottom, null));
         } else {
-            View view = LayoutInflater.from(context)
-                    .inflate(R.layout.item_music, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.item_music, null);
             final MusicHolder musicHolder = new MusicHolder(view);
             musicHolder.musicView.setOnClickListener(v -> {
                 int position = musicHolder.getAdapterPosition();
                 Music music = new Music();
                 music = musics.get(position);
-                startActivity(music, v);
+                startActivity(music.getId(), v);
             });
             return musicHolder;
         }
@@ -68,9 +67,9 @@ public class MusicAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private void startActivity(Music music, View v) {
+    private void startActivity(String id, View v) {
         Intent intent = new Intent(v.getContext(), MusicDetailActivity.class);
-        intent.putExtra("music", music);
+        intent.putExtra("id", id);
         v.getContext().startActivity(intent);
     }
 

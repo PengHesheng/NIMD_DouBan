@@ -1,12 +1,13 @@
 package com.example.a14512.nimd_douban.modules.movie.model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by HP on 2017/5/13.
  */
 
-public class USMovieSubject {
+public class USMovieSubject implements Serializable{
 
     /**
      * date : 8月25日 - 8月27日

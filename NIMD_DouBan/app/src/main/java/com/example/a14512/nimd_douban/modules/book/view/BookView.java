@@ -12,4 +12,6 @@ public interface BookView {
     String getSearchTag();
 
     void setAdapter(ArrayList<Book> books);
+
+    void setBook(Book book);
 }
