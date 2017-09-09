@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@android:color/white"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/img_movie"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        tool:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_title_movie"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        tool:text="蜘蛛侠：英雄归来"/>
+
+    <TextView
+        android:id="@+id/tv_rating_average_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        tool:text="评分：7.7"/>
+
+    <TextView
+        android:id="@+id/tv_wish_count_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        tool:text="4247人想看"/>
+
+    <TextView
+        android:id="@+id/tv_box_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        tool:text="票房：10000000"/>
+</LinearLayout>
