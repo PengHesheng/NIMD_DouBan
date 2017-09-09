@@ -1,4 +1,5 @@
-package com.example.a14512.nimd_douban.modules.main.view;
+﻿package com.example.a14512.nimd_douban.modules.main.view;
+
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,13 +9,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
 import android.widget.ImageButton;
+deddefae29703426d311f3a7f1b16c8157e8c8a2
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.a14512.nimd_douban.LoginActivity;
+
 import com.example.a14512.nimd_douban.R;
 import com.example.a14512.nimd_douban.base.BaseActivity;
 import com.example.a14512.nimd_douban.modules.book.view.BookFragment;
@@ -36,6 +40,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private BookFragment bookFragment;
     private MusicFragment musicFragment;
     private ImageButton head_portrait;
+deddefae29703426d311f3a7f1b16c8157e8c8a2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         slidingView = (SlidingView) findViewById(R.id.sliding_view);
         head_portrait=(ImageButton)findViewById(R.id.head_portrait) ;
 
+
         Glide.with(this).load(R.mipmap.icon)
                 .bitmapTransform(new CropCircleTransformation(this))
                 .into(img_toolbar);
@@ -73,6 +79,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         tv_music.setOnClickListener(this);
         activity_main_id.setOnClickListener(this);
         head_portrait.setOnClickListener(this);
+
 
         setDefaultFragment();  //设置默认Fragment
     }
@@ -94,10 +101,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.img_toolbar:
                 slidingView.openMenu();
                 break;
+
             case R.id.head_portrait:
                 Intent intent=new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
+
             case R.id.tv_movie:
                 tv_title.setText(tv_movie.getText());
                 tv_movie.setTextColor(this.getResources().getColor(R.color.mainToolbar));
