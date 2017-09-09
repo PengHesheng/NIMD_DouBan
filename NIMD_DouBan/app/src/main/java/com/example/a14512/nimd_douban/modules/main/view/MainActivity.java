@@ -1,5 +1,6 @@
 package com.example.a14512.nimd_douban.modules.main.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.a14512.nimd_douban.R;
@@ -17,6 +19,7 @@ import com.example.a14512.nimd_douban.base.BaseActivity;
 import com.example.a14512.nimd_douban.modules.book.view.BookFragment;
 import com.example.a14512.nimd_douban.modules.movie.view.MovieFragment;
 import com.example.a14512.nimd_douban.modules.music.view.MusicFragment;
+import com.example.a14512.nimd_douban.other.Setting_1Activity;
 import com.example.a14512.nimd_douban.utils.customView.SlidingView;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -125,5 +128,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
         }
         transaction.commit();
+    }
+
+    public void click_1(View view) {
+        Intent intent = new Intent(MainActivity.this,Setting_1Activity.class);
+        startActivity(intent);
+    }
+
+    public void click_2(View view) {
+        System.out.println("敬请期待");
+        Toast.makeText(this,"敬请期待", Toast.LENGTH_SHORT).show();
+
     }
 }

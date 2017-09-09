@@ -39,13 +39,14 @@
             android:src="@drawable/ic_extension"
             android:layout_marginLeft="16dp"/>
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:text="第一个设置"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:onClick="click_1"/>
 
     </LinearLayout>
 
@@ -60,13 +61,14 @@
             android:src="@drawable/ic_explore"
             android:layout_marginLeft="16dp"/>
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:text="第二个设置"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:onClick="click_2"/>
 
     </LinearLayout>
 
@@ -81,13 +83,15 @@
             android:src="@drawable/ic_build"
             android:layout_marginLeft="16dp"/>
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:text="第三个设置"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:onClick="click_2"
+            />
 
     </LinearLayout>
 
@@ -102,13 +106,14 @@
             android:src="@drawable/ic_settings"
             android:layout_marginLeft="16dp"/>
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:text="第四个设置"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:onClick="click_2"/>
 
     </LinearLayout>
 </LinearLayout>

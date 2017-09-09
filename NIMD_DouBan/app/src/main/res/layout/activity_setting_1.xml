@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:fitsSystemWindows="true"
+              android:clipToPadding="false"
+              android:layout_height="match_parent">
+
+
+    <include layout="@layout/activity_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:background="#ccc"
+                android:layout_width="match_parent"
+                android:layout_height="170dp">
+
+                <ImageView
+                    android:src="@drawable/reg"
+                    android:id="@+id/iv_topic"
+                    android:scaleType="centerCrop"
+                    android:layout_centerInParent="true"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.CardView
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:padding="5dp"
+                        android:textColor="#000"
+                        android:textSize="13sp"
+                        android:text="主页\ntest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:padding="5dp"
+                        android:textColor="#000"
+                        android:textSize="13sp"
+                        android:text="关于我们\nNIMD_726组，成立于2017年7月26日"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
