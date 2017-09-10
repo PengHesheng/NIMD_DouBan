@@ -24,6 +24,11 @@ public class SlidingView extends HorizontalScrollView{
     private int mScreenWidth;
     private int mMenuWidth;
 
+    //分别记录上次滑动的坐标（onInterceptTouchEvent）
+    private int lastXIntercept = 0;
+    private int lastYIntercept = 0;
+
+
 
     private int mMenuRightPadding;
 
@@ -115,6 +120,42 @@ public class SlidingView extends HorizontalScrollView{
                 return true;
         }
         return super.onTouchEvent(ev);
+    }
+
+    /**
+     * 事件分发，冲突处理，外部拦截
+     * */
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        boolean intercepted = false;
+//        int x = (int) ev.getX();
+//        int y = (int) ev.getY();
+//        switch (ev.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                intercepted = false;
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                //处理逻辑
+//                int deltaX = x - lastXIntercept;
+//                int deltaY = y - lastYIntercept;
+//
+//                if () {
+//                    intercepted = true;
+//                } else {
+//                    intercepted = false;
+//                }
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                intercepted = false;
+//                break;
+//            default:
+//                break;
+//
+//
+//
+//            return intercepted;
+//        }
+        return super.onInterceptTouchEvent(ev);
     }
 
     /**

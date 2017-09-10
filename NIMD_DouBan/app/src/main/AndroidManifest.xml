@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyThemeBlue">
-        <activity android:name=".other.EntryActivity">
+        <activity android:name=".modules.main.view.EntryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -40,7 +40,8 @@
         <activity
             android:name=".modules.music.view.MusicDetailActivity"
             android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
-        <activity android:name=".other.Setting_1Activity">
+        <activity android:name=".modules.main.view.Setting_1Activity"
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme">
         </activity>
     </application>
 

@@ -17,12 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RelativeLayout
+                android:id="@+id/setting_layout"
                 android:background="#ccc"
                 android:layout_width="match_parent"
                 android:layout_height="170dp">
 
                 <ImageView
-                    android:src="@drawable/reg"
+                    android:src="@mipmap/icon"
                     android:id="@+id/iv_topic"
                     android:scaleType="centerCrop"
                     android:layout_centerInParent="true"

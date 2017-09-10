@@ -1,4 +1,4 @@
-package com.example.a14512.nimd_douban.other;
+package com.example.a14512.nimd_douban.modules.main.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import com.example.a14512.nimd_douban.R;
-import com.example.a14512.nimd_douban.modules.main.view.MainActivity;
 
 
 /**
