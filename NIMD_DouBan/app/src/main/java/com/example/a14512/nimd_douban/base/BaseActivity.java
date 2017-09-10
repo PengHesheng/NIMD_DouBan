@@ -53,6 +53,15 @@ public class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startIntentActivity(BaseActivity activity1,BaseActivity activity2,
+                                    String name, String value, String name2, String value2){
+        Intent intent = new Intent();
+        intent.putExtra(name, value);
+        intent.putExtra(name2, value2);
+        intent.setClass(activity1, activity2.getClass());
+        startActivity(intent);
+    }
+
     public void startIntentActivity(BaseActivity activity1,Fragment fragment2){
         Intent intent = new Intent();
         intent.setClass(activity1, fragment2.getClass());
@@ -62,6 +71,15 @@ public class BaseActivity extends AppCompatActivity {
     public void startIntentActivity(BaseActivity activity1,Fragment fragment2, String name, String value){
         Intent intent = new Intent();
         intent.putExtra(name, value);
+        intent.setClass(activity1, fragment2.getClass());
+        startActivity(intent);
+    }
+
+    public void startIntentActivity(BaseActivity activity1,Fragment fragment2,
+                                    String name, String value, String name2, String value2){
+        Intent intent = new Intent();
+        intent.putExtra(name, value);
+        intent.putExtra(name2, value2);
         intent.setClass(activity1, fragment2.getClass());
         startActivity(intent);
     }

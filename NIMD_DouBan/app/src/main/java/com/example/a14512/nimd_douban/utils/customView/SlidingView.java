@@ -17,6 +17,7 @@ import com.example.a14512.nimd_douban.R;
  */
 
 public class SlidingView extends HorizontalScrollView{
+    private OnGiveUpTouchEventListener mGiveUpTouchEventListener;
 
     private LinearLayout mWapper;
     private ViewGroup mMenu;  //菜单区
@@ -122,40 +123,54 @@ public class SlidingView extends HorizontalScrollView{
         return super.onTouchEvent(ev);
     }
 
+    public void setOnGiveUpTouchEventListener(OnGiveUpTouchEventListener l) {
+        mGiveUpTouchEventListener = l;
+    }
+
     /**
      * 事件分发，冲突处理，外部拦截
      * */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-//        boolean intercepted = false;
-//        int x = (int) ev.getX();
-//        int y = (int) ev.getY();
-//        switch (ev.getAction()) {
-//            case MotionEvent.ACTION_DOWN:
-//                intercepted = false;
-//                break;
-//            case MotionEvent.ACTION_MOVE:
-//                //处理逻辑
-//                int deltaX = x - lastXIntercept;
-//                int deltaY = y - lastYIntercept;
-//
-//                if () {
-//                    intercepted = true;
+        //外部拦截无法实现逻辑判断
+        boolean intercepted = false;
+        int x = (int) ev.getX();
+        int y = (int) ev.getY();
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                onTouchEvent(ev);  //处理内部拦截时
+                intercepted = false;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                //处理逻辑
+//                if (mGiveUpTouchEventListener != null) {
+//                    if (mGiveUpTouchEventListener.giveUpTouchEvent(ev)) {
+//                        intercepted = true;
+//                    }
 //                } else {
 //                    intercepted = false;
 //                }
-//                break;
-//            case MotionEvent.ACTION_UP:
-//                intercepted = false;
-//                break;
-//            default:
-//                break;
-//
-//
-//
-//            return intercepted;
-//        }
-        return super.onInterceptTouchEvent(ev);
+                //外部拦截ScrollView的上下滑动，当ScrollView上下滑动时，事件给ScrollView
+                if (Math.abs(x - lastXIntercept) > Math.abs(y - lastYIntercept)) {
+                    intercepted = true;
+                } else {
+                    intercepted = false;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                intercepted = false;
+                break;
+            default:
+                break;
+        }
+        lastXIntercept = x;
+        lastYIntercept = y;
+        return intercepted;
+       /* if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            onTouchEvent(ev);
+            return false;
+        }
+        return true;*/
     }
 
     /**
@@ -199,6 +214,10 @@ public class SlidingView extends HorizontalScrollView{
         } else {
             openMenu();
         }
+    }
+
+    public interface OnGiveUpTouchEventListener {
+        public boolean giveUpTouchEvent(MotionEvent event);
     }
 
 }

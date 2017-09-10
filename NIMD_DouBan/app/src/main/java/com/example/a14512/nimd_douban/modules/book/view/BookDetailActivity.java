@@ -118,7 +118,8 @@ public class BookDetailActivity extends BaseSwipeBackActivity implements BookVie
         tv_book_publish_time.setText(book.getPubdate());
         tv_book_publish_address.setText(book.getPublisher());
         tv_book_art.setText(book.getAuthor().get(0));
-        tv_more_info.setOnClickListener(v -> startIntentActivity(this, new WebActivity(), "alt", book.getAlt()));
+        tv_more_info.setOnClickListener(v -> startIntentActivity(this, new WebActivity(),
+                "alt", book.getAlt(), "title", book.getTitle()));
         tv_description.setText(book.getSummary());
         tv_author_description.setText(book.getAuthor_intro());
         tv_chapters.setText(book.getCatalog());

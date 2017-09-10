@@ -3,7 +3,7 @@ package com.example.a14512.nimd_douban.modules.movie.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +16,7 @@ import com.example.a14512.nimd_douban.modules.movie.model.entity.Movie;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.MovieDetail;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.USMovie;
 import com.example.a14512.nimd_douban.modules.movie.presenter.MoviePresenterImp;
+import com.example.a14512.nimd_douban.utils.customView.MyRecyclerView;
 
 import java.util.ArrayList;
 
@@ -23,14 +24,14 @@ import java.util.ArrayList;
  * Created by 14512 on 2017/9/5.
  */
 
-public class MovieFragment extends BaseFragment implements View.OnClickListener, MovieView {
+public class MovieFragment extends BaseFragment implements View.OnClickListener, MovieView{
 
-    private RecyclerView new_movies_recycler_view;
-    private RecyclerView in_theaters_recycler_view;
-    private RecyclerView coming_soon_recycler_view;
-    private RecyclerView us_box_recycler_view;
-    private RecyclerView top250_recycler_view;
-    private RecyclerView weekly_recycler_view;
+    private MyRecyclerView new_movies_recycler_view;
+    private MyRecyclerView in_theaters_recycler_view;
+    private MyRecyclerView coming_soon_recycler_view;
+    private MyRecyclerView us_box_recycler_view;
+    private MyRecyclerView top250_recycler_view;
+    private MyRecyclerView weekly_recycler_view;
 
     @Nullable
     @Override
@@ -42,17 +43,17 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
 
     private void initView(View view) {
         LinearLayout more_new_movies = (LinearLayout) view.findViewById(R.id.more_new_movies);
-        new_movies_recycler_view = (RecyclerView) view.findViewById(R.id.new_movies_recycler_view);
+        new_movies_recycler_view = (MyRecyclerView) view.findViewById(R.id.new_movies_recycler_view);
         LinearLayout more_in_theaters = (LinearLayout) view.findViewById(R.id.more_in_theaters);
-        in_theaters_recycler_view = (RecyclerView) view.findViewById(R.id.in_theaters_recycler_view);
+        in_theaters_recycler_view = (MyRecyclerView) view.findViewById(R.id.in_theaters_recycler_view);
         LinearLayout more_coming_soon = (LinearLayout) view.findViewById(R.id.more_coming_soon);
-        coming_soon_recycler_view = (RecyclerView) view.findViewById(R.id.coming_soon_recycler_view);
+        coming_soon_recycler_view = (MyRecyclerView) view.findViewById(R.id.coming_soon_recycler_view);
         LinearLayout more_us_box = (LinearLayout) view.findViewById(R.id.more_us_box);
-        us_box_recycler_view = (RecyclerView) view.findViewById(R.id.us_box_recycler_view);
+        us_box_recycler_view = (MyRecyclerView) view.findViewById(R.id.us_box_recycler_view);
         LinearLayout more_top250 = (LinearLayout) view.findViewById(R.id.more_top250);
-        top250_recycler_view = (RecyclerView) view.findViewById(R.id.top250_recycler_view);
+        top250_recycler_view = (MyRecyclerView) view.findViewById(R.id.top250_recycler_view);
         LinearLayout more_weekly = (LinearLayout) view.findViewById(R.id.more_weekly);
-        weekly_recycler_view = (RecyclerView) view.findViewById(R.id.weekly_recycler_view);
+        weekly_recycler_view = (MyRecyclerView) view.findViewById(R.id.weekly_recycler_view);
 
         getData();
 
@@ -68,11 +69,16 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
 
     private void getData() {
         MoviePresenterImp moviePresenterImp = new MoviePresenterImp(this);
-        moviePresenterImp.getTop250(0, 10);
-        moviePresenterImp.getComingSoon(0, 10);
-        moviePresenterImp.getInTheaters("重庆");
-        moviePresenterImp.getNewMovies();
-        moviePresenterImp.getUSBox();
+        Log.d("123456", moviePresenterImp.isACache()+"");
+        if (moviePresenterImp.isACache()) {
+            moviePresenterImp.getMovieFromLocal();
+        } else {
+            moviePresenterImp.getTop250(0, 10);
+            moviePresenterImp.getComingSoon(0, 10);
+            moviePresenterImp.getInTheaters("重庆");
+//            moviePresenterImp.getNewMovies();
+            moviePresenterImp.getUSBox();
+        }
     }
 
     private void initRecyclerView() {
@@ -170,4 +176,12 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
     public void showMovie(MovieDetail movieDetail) {
 
     }
+
+
+//    @Override
+//    public boolean giveUpTouchEvent(MotionEvent event) {
+////        LinearLayoutManager layoutManager = (LinearLayoutManager) top250_recycler_view.getLayoutManager();
+////        if (layoutManager.findFirstCompletelyVisibleItemPosition() == 0) return true;
+//        return false;
+//    }
 }

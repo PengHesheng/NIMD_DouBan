@@ -1,7 +1,6 @@
 ﻿package com.example.a14512.nimd_douban.modules.main.view;
 
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -9,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,19 +16,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.a14512.nimd_douban.modules.login.LoginActivity;
 import com.example.a14512.nimd_douban.R;
 import com.example.a14512.nimd_douban.base.BaseActivity;
 import com.example.a14512.nimd_douban.modules.book.view.BookFragment;
+import com.example.a14512.nimd_douban.modules.login.LoginActivity;
 import com.example.a14512.nimd_douban.modules.movie.view.MovieFragment;
+import com.example.a14512.nimd_douban.modules.movie.view.SearchActivity;
 import com.example.a14512.nimd_douban.modules.music.view.MusicFragment;
 import com.example.a14512.nimd_douban.utils.customView.SlidingView;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 
-
-public class MainActivity extends BaseActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView img_toolbar;
     private TextView tv_title;
@@ -39,8 +39,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private MovieFragment movieFragment;
     private BookFragment bookFragment;
     private MusicFragment musicFragment;
-    private ImageButton head_portrait;
-
+    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +60,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         tv_music = (TextView) findViewById(R.id.tv_music);
         LinearLayout activity_main_id = (LinearLayout) findViewById(R.id.activity_main_id);
         slidingView = (SlidingView) findViewById(R.id.sliding_view);
-        head_portrait=(ImageButton)findViewById(R.id.head_portrait) ;
+        frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+        ImageButton head_portrait = (ImageButton) findViewById(R.id.head_portrait);
+        TextView tv_right = (TextView) findViewById(R.id.tv_right);
+        TextView tv_login = (TextView) findViewById(R.id.tv_login);
 
 
         Glide.with(this).load(R.mipmap.icon)
                 .bitmapTransform(new CropCircleTransformation(this))
                 .into(img_toolbar);
         tv_title.setText(tv_movie.getText());
+        tv_right.setText("搜索");
         //初始化字体颜色
         tv_movie.setTextColor(this.getResources().getColor(R.color.mainToolbar));
         tv_book.setTextColor(Color.GRAY);
@@ -79,9 +82,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         tv_music.setOnClickListener(this);
         activity_main_id.setOnClickListener(this);
         head_portrait.setOnClickListener(this);
-
+        tv_right.setOnClickListener(this);
+        tv_login.setOnClickListener(this);
 
         setDefaultFragment();  //设置默认Fragment
+//        slidingView.setOnGiveUpTouchEventListener(new MovieFragment());
     }
 
     private void setDefaultFragment() {
@@ -98,15 +103,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         switch (v.getId()) {
+            case R.id.tv_right:
+                startIntentActivity(this, new SearchActivity());
             case R.id.img_toolbar:
-                slidingView.openMenu();
+                slidingView.changeMenu();
                 break;
-
             case R.id.head_portrait:
-                Intent intent=new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+            case R.id.tv_login:
+                startIntentActivity(this, new LoginActivity());
                 break;
-
             case R.id.tv_movie:
                 tv_title.setText(tv_movie.getText());
                 tv_movie.setTextColor(this.getResources().getColor(R.color.mainToolbar));
@@ -152,7 +157,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     public void click_2(View view) {
         System.out.println("敬请期待");
-        Toast.makeText(this,"敬请期待", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "敬请期待", Toast.LENGTH_SHORT).show();
 
     }
+
 }

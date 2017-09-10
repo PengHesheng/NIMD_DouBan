@@ -16,17 +16,17 @@ import com.example.a14512.nimd_douban.base.BaseSwipeBackActivity;
  */
 
 public class WebActivity extends BaseSwipeBackActivity {
-    private TextView tv_title;
     private TextView tv_right;
     private AppBarLayout appbarlayout;
 
-    private String alt;
+    private String alt, title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
         alt = getIntent().getStringExtra("alt");
+        title = getIntent().getStringExtra("title");
         initView();
     }
 
@@ -35,12 +35,14 @@ public class WebActivity extends BaseSwipeBackActivity {
         setSupportActionBar(toolbar);
         setStatusBarColor(R.color.mainToolbar);
         ImageView back = (ImageView) findViewById(R.id.img_toolbar);
-        tv_title = (TextView) findViewById(R.id.tv_title);
+        TextView tv_title = (TextView) findViewById(R.id.tv_title);
         tv_right = (TextView) findViewById(R.id.tv_right);
         appbarlayout = (AppBarLayout) findViewById(R.id.appbarlayout);
         WebView webview = (WebView) findViewById(R.id.webview);
 
         back.setOnClickListener(v -> finish());
+
+        tv_title.setText(title);
 
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setWebViewClient(new WebViewClient());

@@ -21,4 +21,8 @@ public interface MoviePresenter {
 
     void getMovieDetail(String id);
 
+    void getMovieFromLocal();
+
+    boolean isACache();
+
 }

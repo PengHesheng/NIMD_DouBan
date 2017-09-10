@@ -106,7 +106,8 @@ public class MusicDetailActivity extends BaseSwipeBackActivity implements MusicV
                 .into(new SimpleTarget<GlideDrawable>() {
                     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                     @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                    public void onResourceReady(GlideDrawable resource,
+                                                GlideAnimation<? super GlideDrawable> glideAnimation) {
                         bg_layout.setBackground(resource);
                     }
                 });
@@ -115,7 +116,8 @@ public class MusicDetailActivity extends BaseSwipeBackActivity implements MusicV
         tv_music_grade_num.setText("" + music.getRating().getNumRaters());
         tv_music_publishtime.setText(music.getAttrs().getPubdate().get(0));
         tv_music_art.setText(music.getAuthor().get(0).getName());
-        tv_more_info.setOnClickListener(v -> startIntentActivity(this, new WebActivity(), "alt", music.getAlt()));
+        tv_more_info.setOnClickListener(v -> startIntentActivity(this, new WebActivity(),
+                "alt", music.getAlt(), "title", music.getTitle()));
         tv_songs.setText(music.getAttrs().getTracks().get(0));
     }
 }

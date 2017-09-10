@@ -55,7 +55,7 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.example.a14512.nimd_douban.utils.customView.MyRecyclerView
                     android:id="@+id/in_theaters_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.example.a14512.nimd_douban.utils.customView.MyRecyclerView
                     android:id="@+id/coming_soon_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.example.a14512.nimd_douban.utils.customView.MyRecyclerView
                     android:id="@+id/us_box_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -205,7 +205,7 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.example.a14512.nimd_douban.utils.customView.MyRecyclerView
                     android:id="@+id/top250_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -255,7 +255,7 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.example.a14512.nimd_douban.utils.customView.MyRecyclerView
                     android:id="@+id/weekly_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -305,7 +305,7 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.example.a14512.nimd_douban.utils.customView.MyRecyclerView
                     android:id="@+id/new_movies_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

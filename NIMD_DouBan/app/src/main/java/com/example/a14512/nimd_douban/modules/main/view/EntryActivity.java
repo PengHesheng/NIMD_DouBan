@@ -39,7 +39,7 @@ public class EntryActivity extends Activity {
                 EntryActivity.this.startActivity(mainIntent);
                 EntryActivity.this.finish();
             }
-        }, 2900); //2900 for release
+        }, 1000); //2900 for release
 
     }
 }

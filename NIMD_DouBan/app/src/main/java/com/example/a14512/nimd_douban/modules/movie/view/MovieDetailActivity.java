@@ -98,8 +98,7 @@ public class MovieDetailActivity extends BaseSwipeBackActivity implements MovieV
                 + "/" + movieDetail.getGenres().get(2));
         tv_film_country.setText(movieDetail.getCountries().get(0));
         tv_description.setText(movieDetail.getSummary());
-        tv_more_info.setOnClickListener(v -> {
-            startIntentActivity(this, new WebActivity(), "alt", movieDetail.getAlt());
-        });
+        tv_more_info.setOnClickListener(v -> startIntentActivity(this, new WebActivity(),
+                        "alt", movieDetail.getAlt(), "title", movieDetail.getTitle()));
     }
 }
