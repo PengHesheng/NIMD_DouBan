@@ -40,9 +40,13 @@
         <activity
             android:name=".modules.music.view.MusicDetailActivity"
             android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
+
         <activity android:name=".modules.main.view.Setting_1Activity"
-            android:theme="@style/PIN.SwipeBack.Transparent.Theme">
-        </activity>
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
+
+
+        <activity android:name=".modules.login.LoginActivity"
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
     </application>
 
 </manifest>
