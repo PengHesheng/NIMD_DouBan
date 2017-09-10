@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.a14512.nimd_douban">
+          package="com.example.a14512.nimd_douban">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:name=".DouBanApplication"
@@ -17,28 +17,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyThemeBlue">
-        <activity android:name=".modules.main.view.MainActivity">
+        <activity android:name=".other.EntryActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".modules.main.view.MainActivity"/>
+        <activity
+            android:name=".modules.movie.view.MovieDetailActivity"
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
+        <activity
+            android:name=".modules.movie.view.MovieMoreActivity"
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
+        <activity
+            android:name=".modules.main.view.WebActivity"
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
+        <activity
+            android:name=".modules.book.view.BookDetailActivity"
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
+        <activity
+            android:name=".modules.music.view.MusicDetailActivity"
+            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
 
-        <activity android:name=".modules.movie.view.MovieDetailActivity"
-            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
-        <activity android:name=".modules.movie.view.MovieMoreActivity"
-            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
-        <activity android:name=".modules.main.view.WebActivity"
-            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
-        <activity android:name=".modules.book.view.BookDetailActivity"
-            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
-        <activity android:name=".modules.music.view.MusicDetailActivity"
-            android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
 
         <activity android:name=".LoginActivity"
             android:theme="@style/PIN.SwipeBack.Transparent.Theme"/>
 
+        <activity android:name=".other.Setting_1Activity">
+        </activity>
 
     </application>
 
