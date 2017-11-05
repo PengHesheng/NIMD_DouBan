@@ -1,7 +1,6 @@
 package com.example.a14512.nimd_douban.modules.movie.view;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,7 +25,6 @@ import java.util.ArrayList;
 
 public class MovieMoreActivity extends BaseSwipeBackActivity implements MovieView {
     private TextView tv_title;
-    private AppBarLayout appbarlayout;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private MoreMovieAdapter movieAdapter;
@@ -160,7 +158,6 @@ public class MovieMoreActivity extends BaseSwipeBackActivity implements MovieVie
         setStatusBarColor(R.color.mainToolbar);
         ImageView back = (ImageView) findViewById(R.id.img_toolbar);
         tv_title = (TextView) findViewById(R.id.tv_title);
-        appbarlayout = (AppBarLayout) findViewById(R.id.appbarlayout);
         recyclerView = (RecyclerView) findViewById(R.id.movie_more_recycler);
         refresh = (SwipeRefreshLayout) findViewById(R.id.movie_more_refresh);
 

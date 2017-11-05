@@ -3,7 +3,6 @@ package com.example.a14512.nimd_douban.modules.movie.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,17 +20,15 @@ import com.example.a14512.nimd_douban.utils.customView.MyRecyclerView;
 import java.util.ArrayList;
 
 /**
- * Created by 14512 on 2017/9/5.
+ * @author by 14512 on 2017/9/5.
  */
 
 public class MovieFragment extends BaseFragment implements View.OnClickListener, MovieView{
 
-    private MyRecyclerView new_movies_recycler_view;
-    private MyRecyclerView in_theaters_recycler_view;
-    private MyRecyclerView coming_soon_recycler_view;
-    private MyRecyclerView us_box_recycler_view;
-    private MyRecyclerView top250_recycler_view;
-    private MyRecyclerView weekly_recycler_view;
+    private MyRecyclerView inTheatersRecyclerView;
+    private MyRecyclerView comingSoonRecyclerView;
+    private MyRecyclerView usBoxRecyclerView;
+    private MyRecyclerView top250RecyclerView;
 
     @Nullable
     @Override
@@ -42,48 +39,45 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
     }
 
     private void initView(View view) {
-        LinearLayout more_new_movies = (LinearLayout) view.findViewById(R.id.more_new_movies);
-        new_movies_recycler_view = (MyRecyclerView) view.findViewById(R.id.new_movies_recycler_view);
-        LinearLayout more_in_theaters = (LinearLayout) view.findViewById(R.id.more_in_theaters);
-        in_theaters_recycler_view = (MyRecyclerView) view.findViewById(R.id.in_theaters_recycler_view);
-        LinearLayout more_coming_soon = (LinearLayout) view.findViewById(R.id.more_coming_soon);
-        coming_soon_recycler_view = (MyRecyclerView) view.findViewById(R.id.coming_soon_recycler_view);
-        LinearLayout more_us_box = (LinearLayout) view.findViewById(R.id.more_us_box);
-        us_box_recycler_view = (MyRecyclerView) view.findViewById(R.id.us_box_recycler_view);
-        LinearLayout more_top250 = (LinearLayout) view.findViewById(R.id.more_top250);
-        top250_recycler_view = (MyRecyclerView) view.findViewById(R.id.top250_recycler_view);
-        LinearLayout more_weekly = (LinearLayout) view.findViewById(R.id.more_weekly);
-        weekly_recycler_view = (MyRecyclerView) view.findViewById(R.id.weekly_recycler_view);
+        LinearLayout moreInTheaters = (LinearLayout) view.findViewById(R.id.more_in_theaters);
+        inTheatersRecyclerView = (MyRecyclerView) view.findViewById(R.id.in_theaters_recycler_view);
+        LinearLayout moreComingSoon = (LinearLayout) view.findViewById(R.id.more_coming_soon);
+        comingSoonRecyclerView = (MyRecyclerView) view.findViewById(R.id.coming_soon_recycler_view);
+        LinearLayout moreUsBox = (LinearLayout) view.findViewById(R.id.more_us_box);
+        usBoxRecyclerView = (MyRecyclerView) view.findViewById(R.id.us_box_recycler_view);
+        LinearLayout moreTop250 = (LinearLayout) view.findViewById(R.id.more_top250);
+        top250RecyclerView = (MyRecyclerView) view.findViewById(R.id.top250_recycler_view);
 
-        getData();
-
-        more_coming_soon.setOnClickListener(this);
-        more_in_theaters.setOnClickListener(this);
-        more_new_movies.setOnClickListener(this);
-        more_top250.setOnClickListener(this);
-        more_us_box.setOnClickListener(this);
-        more_weekly.setOnClickListener(this);
+        moreComingSoon.setOnClickListener(this);
+        moreInTheaters.setOnClickListener(this);
+        moreTop250.setOnClickListener(this);
+        moreUsBox.setOnClickListener(this);
 
         initRecyclerView();
+        getData();
     }
 
     private void getData() {
         MoviePresenterImp moviePresenterImp = new MoviePresenterImp(this);
-        Log.d("123456", moviePresenterImp.isACache()+"");
-        if (moviePresenterImp.isACache()) {
-            moviePresenterImp.getMovieFromLocal();
-        } else {
+        boolean topLocal = moviePresenterImp.getTopMovieFromLocal();
+        if (!topLocal) {
             moviePresenterImp.getTop250(0, 10);
-            moviePresenterImp.getComingSoon(0, 10);
+        }
+        boolean intheaterLocal = moviePresenterImp.getInTheaterFromLocal();
+        if (!intheaterLocal) {
             moviePresenterImp.getInTheaters("重庆");
-//            moviePresenterImp.getNewMovies();
+        }
+        boolean comingLocal = moviePresenterImp.getComingFromLocal();
+        if (!comingLocal) {
+            moviePresenterImp.getComingSoon(0, 10);
+        }
+        boolean usLocal = moviePresenterImp.getUsBoxFromLocal();
+        if (!usLocal) {
             moviePresenterImp.getUSBox();
         }
     }
 
     private void initRecyclerView() {
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(getActivity());
-        layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
         layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
         LinearLayoutManager layoutManager3 = new LinearLayoutManager(getActivity());
@@ -92,22 +86,15 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
         layoutManager4.setOrientation(LinearLayoutManager.HORIZONTAL);
         LinearLayoutManager layoutManager5 = new LinearLayoutManager(getActivity());
         layoutManager5.setOrientation(LinearLayoutManager.HORIZONTAL);
-        LinearLayoutManager layoutManager6 = new LinearLayoutManager(getActivity());
-        layoutManager6.setOrientation(LinearLayoutManager.HORIZONTAL);
-        new_movies_recycler_view.setLayoutManager(layoutManager1);
-        in_theaters_recycler_view.setLayoutManager(layoutManager2);
-        coming_soon_recycler_view.setLayoutManager(layoutManager3);
-        us_box_recycler_view.setLayoutManager(layoutManager4);
-        top250_recycler_view.setLayoutManager(layoutManager5);
-        weekly_recycler_view.setLayoutManager(layoutManager6);
+        inTheatersRecyclerView.setLayoutManager(layoutManager2);
+        comingSoonRecyclerView.setLayoutManager(layoutManager3);
+        usBoxRecyclerView.setLayoutManager(layoutManager4);
+        top250RecyclerView.setLayoutManager(layoutManager5);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.more_new_movies:
-                startIntentActivity(getContext(), new MovieMoreActivity(), "type", "new_movies");
-                break;
             case R.id.more_in_theaters:
                 startIntentActivity(getContext(), new MovieMoreActivity(), "type", "in_theaters");
                 break;
@@ -120,9 +107,6 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
             case R.id.more_top250:
                 startIntentActivity(getContext(), new MovieMoreActivity(), "type", "top250");
                 break;
-            case R.id.more_weekly:
-                startIntentActivity(getContext(), new MovieMoreActivity(), "type", "weekly");
-                break;
             default:
                 break;
         }
@@ -132,30 +116,24 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
     public void setAdapter(ArrayList<Movie> movies, String type) {
         switch (type) {
             case "new_movies":
-                MovieAdapter newMoviesAdapter = new MovieAdapter();
-                newMoviesAdapter.setMovies(movies, 2);
-                newMoviesAdapter.notifyDataSetChanged();
-                new_movies_recycler_view.setAdapter(newMoviesAdapter);
                 break;
             case "in_theaters":
                 MovieAdapter inTheatersMovieAdapter = new MovieAdapter();
                 inTheatersMovieAdapter.setMovies(movies, 2);
                 inTheatersMovieAdapter.notifyDataSetChanged();
-                in_theaters_recycler_view.setAdapter(inTheatersMovieAdapter);
+                inTheatersRecyclerView.setAdapter(inTheatersMovieAdapter);
                 break;
             case "coming_soon":
                 MovieAdapter comingSoonMovieAdapter = new MovieAdapter();
                 comingSoonMovieAdapter.setMovies(movies, 1);
                 comingSoonMovieAdapter.notifyDataSetChanged();
-                coming_soon_recycler_view.setAdapter(comingSoonMovieAdapter);
-                break;
-            case "us_box":
+                comingSoonRecyclerView.setAdapter(comingSoonMovieAdapter);
                 break;
             case "top250":
                 MovieAdapter top250Adapter = new MovieAdapter();
                 top250Adapter.setMovies(movies, 2);
                 top250Adapter.notifyDataSetChanged();
-                top250_recycler_view.setAdapter(top250Adapter);
+                top250RecyclerView.setAdapter(top250Adapter);
                 break;
             case "weekly":
                 break;
@@ -169,19 +147,11 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener,
         MovieAdapter usBoxMovieAdapter = new MovieAdapter();
         usBoxMovieAdapter.setUsBox(usMovies, 0);
         usBoxMovieAdapter.notifyDataSetChanged();
-        us_box_recycler_view.setAdapter(usBoxMovieAdapter);
+        usBoxRecyclerView.setAdapter(usBoxMovieAdapter);
     }
 
     @Override
     public void showMovie(MovieDetail movieDetail) {
-
+        //unuse
     }
-
-
-//    @Override
-//    public boolean giveUpTouchEvent(MotionEvent event) {
-////        LinearLayoutManager layoutManager = (LinearLayoutManager) top250_recycler_view.getLayoutManager();
-////        if (layoutManager.findFirstCompletelyVisibleItemPosition() == 0) return true;
-//        return false;
-//    }
 }

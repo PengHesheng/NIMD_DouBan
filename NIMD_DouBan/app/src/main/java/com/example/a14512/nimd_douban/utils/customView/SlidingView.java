@@ -17,8 +17,6 @@ import com.example.a14512.nimd_douban.R;
  */
 
 public class SlidingView extends HorizontalScrollView{
-    private OnGiveUpTouchEventListener mGiveUpTouchEventListener;
-
     private LinearLayout mWapper;
     private ViewGroup mMenu;  //菜单区
     private ViewGroup mContent;  //内容区
@@ -28,8 +26,6 @@ public class SlidingView extends HorizontalScrollView{
     //分别记录上次滑动的坐标（onInterceptTouchEvent）
     private int lastXIntercept = 0;
     private int lastYIntercept = 0;
-
-
 
     private int mMenuRightPadding;
 
@@ -66,13 +62,7 @@ public class SlidingView extends HorizontalScrollView{
         int initSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, displayMetrics);
         mMenuRightPadding = a.getDimensionPixelSize(R.styleable.SlidingMenu_rightPadding, initSize);
         a.recycle();
-
-         /*   WindowManager windowManager = (WindowManager) context.getSystemServiceName(Class.forName(Context.WINDOW_SERVICE));
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(outMetrics);*/
-
         mScreenWidth = displayMetrics.widthPixels;
-
     }
 
     /**
@@ -119,12 +109,10 @@ public class SlidingView extends HorizontalScrollView{
                     isOpen = true;
                 }
                 return true;
+            default:
+                break;
         }
         return super.onTouchEvent(ev);
-    }
-
-    public void setOnGiveUpTouchEventListener(OnGiveUpTouchEventListener l) {
-        mGiveUpTouchEventListener = l;
     }
 
     /**
@@ -142,14 +130,6 @@ public class SlidingView extends HorizontalScrollView{
                 intercepted = false;
                 break;
             case MotionEvent.ACTION_MOVE:
-                //处理逻辑
-//                if (mGiveUpTouchEventListener != null) {
-//                    if (mGiveUpTouchEventListener.giveUpTouchEvent(ev)) {
-//                        intercepted = true;
-//                    }
-//                } else {
-//                    intercepted = false;
-//                }
                 //外部拦截ScrollView的上下滑动，当ScrollView上下滑动时，事件给ScrollView
                 if (Math.abs(x - lastXIntercept) > Math.abs(y - lastYIntercept)) {
                     intercepted = true;
@@ -166,11 +146,6 @@ public class SlidingView extends HorizontalScrollView{
         lastXIntercept = x;
         lastYIntercept = y;
         return intercepted;
-       /* if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            onTouchEvent(ev);
-            return false;
-        }
-        return true;*/
     }
 
     /**
@@ -191,7 +166,9 @@ public class SlidingView extends HorizontalScrollView{
      * 打开菜单
      */
     public void openMenu() {
-        if (isOpen) return;
+        if (isOpen) {
+            return;
+        }
         this.smoothScrollTo(0, 0);
         isOpen = true;
     }
@@ -200,7 +177,9 @@ public class SlidingView extends HorizontalScrollView{
      * 关闭菜单
      * */
     public void closeMenu() {
-        if (!isOpen) return;
+        if (!isOpen) {
+            return;
+        }
         this.smoothScrollTo(mMenuWidth, 0);
         isOpen = false;
     }
@@ -214,10 +193,6 @@ public class SlidingView extends HorizontalScrollView{
         } else {
             openMenu();
         }
-    }
-
-    public interface OnGiveUpTouchEventListener {
-        public boolean giveUpTouchEvent(MotionEvent event);
     }
 
 }

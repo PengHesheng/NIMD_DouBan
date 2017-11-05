@@ -1,17 +1,19 @@
 package com.example.a14512.nimd_douban;
 
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
 import com.example.a14512.nimd_douban.base.Global;
 import com.example.a14512.nimd_douban.http.RetrofitHelper;
+import com.example.a14512.nimd_douban.http.RxUtil.RetrofitServiceManager;
 import com.example.a14512.nimd_douban.utils.DouBanContext;
 
 /**
  * Created by 14512 on 2017/8/29.
  */
 
-public class DouBanApplication extends android.app.Application {
+public class DouBanApplication extends Application {
 
     private static Context mContext;
     public static String cacheDir = "";
@@ -29,6 +31,7 @@ public class DouBanApplication extends android.app.Application {
         super.onCreate();
         Global.init(this);
         mContext = getApplicationContext();
+        RetrofitServiceManager.getInstance();
         RetrofitHelper.getInstance();
         /**
          * 如果存在SD卡则将缓存写入SD卡,否则写入手机内存

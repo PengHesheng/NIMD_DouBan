@@ -1,7 +1,5 @@
 package com.example.a14512.nimd_douban.modules.movie.presenter;
 
-import android.util.Log;
-
 import com.example.a14512.nimd_douban.C;
 import com.example.a14512.nimd_douban.modules.movie.model.MovieModelImp;
 import com.example.a14512.nimd_douban.modules.movie.model.entity.Movie;
@@ -16,8 +14,10 @@ import java.util.ArrayList;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
+import static com.example.a14512.nimd_douban.C.TOP250;
+
 /**
- * Created by 14512 on 2017/9/5.
+ * @author by 14512 on 2017/9/5.
  */
 
 public class MoviePresenterImp implements MoviePresenter {
@@ -27,8 +27,6 @@ public class MoviePresenterImp implements MoviePresenter {
     private ArrayList<Movie> movies;
     private ArrayList<USMovie> usMovies = new ArrayList<>();
     private MovieDetail movieDetail;
-
-    private static boolean isACache = false;
 
     public MoviePresenterImp(MovieView movieView) {
         this.movieView = movieView;
@@ -47,6 +45,10 @@ public class MoviePresenterImp implements MoviePresenter {
             @Override
             public void onNext(ArrayList<Movie> value) {
                 movies = value;
+                if (movies != null) {
+                    ACache.getDefault().put(TOP250, movies);
+                    movieView.setAdapter(movies, TOP250);
+                }
             }
 
             @Override
@@ -56,10 +58,7 @@ public class MoviePresenterImp implements MoviePresenter {
 
             @Override
             public void onComplete() {
-                ACache.getDefault().put(C.TOP250, movies);
-                Log.d("123456", ""+ ACache.getDefault().getAsObject(C.TOP250));
-                isACache = true;
-                movieView.setAdapter(movies, C.TOP250);
+
             }
         };
         modelImp.getTop250(observer, start, count);
@@ -77,6 +76,10 @@ public class MoviePresenterImp implements MoviePresenter {
             @Override
             public void onNext(ArrayList<Movie> value) {
                 movies = value;
+                if (movies != null) {
+                    ACache.getDefault().put(C.IN_THEATERS, movies);
+                    movieView.setAdapter(movies, C.IN_THEATERS);
+                }
             }
 
             @Override
@@ -86,9 +89,7 @@ public class MoviePresenterImp implements MoviePresenter {
 
             @Override
             public void onComplete() {
-                ACache.getDefault().put(C.IN_THEATERS, movies);
-                isACache = true;
-                movieView.setAdapter(movies, C.IN_THEATERS);
+
             }
         };
         modelImp.getInTheaters(observer, city);
@@ -110,8 +111,11 @@ public class MoviePresenterImp implements MoviePresenter {
 
             @Override
             public void onNext(ArrayList<Movie> value) {
-                Log.d("123456MP", ""+value.get(0).getTitleX());
                 movies = value;
+                if (movies != null) {
+                    ACache.getDefault().put(C.NEW_MOVIES, movies);
+                    movieView.setAdapter(movies, C.NEW_MOVIES);
+                }
             }
 
             @Override
@@ -121,9 +125,7 @@ public class MoviePresenterImp implements MoviePresenter {
 
             @Override
             public void onComplete() {
-                ACache.getDefault().put(C.NEW_MOVIES, movies);
-                isACache = true;
-                movieView.setAdapter(movies, C.NEW_MOVIES);
+
             }
         };
         modelImp.getNewMovies(observer);
@@ -141,6 +143,10 @@ public class MoviePresenterImp implements MoviePresenter {
             @Override
             public void onNext(ArrayList<USMovie> value) {
                 usMovies = value;
+                if (usMovies != null) {
+                    ACache.getDefault().put(C.US_BOX, usMovies);
+                    movieView.setUxBoxAdapter(usMovies);
+                }
             }
 
             @Override
@@ -150,9 +156,7 @@ public class MoviePresenterImp implements MoviePresenter {
 
             @Override
             public void onComplete() {
-                ACache.getDefault().put(C.US_BOX, usMovies);
-                isACache = true;
-                movieView.setUxBoxAdapter(usMovies);
+
             }
         };
         modelImp.getUSBox(observer);
@@ -170,6 +174,10 @@ public class MoviePresenterImp implements MoviePresenter {
             @Override
             public void onNext(ArrayList<Movie> value) {
                 movies = value;
+                if (movies != null) {
+                    ACache.getDefault().put(C.COMING_SOON, movies);
+                    movieView.setAdapter(movies, C.COMING_SOON);
+                }
             }
 
             @Override
@@ -179,9 +187,7 @@ public class MoviePresenterImp implements MoviePresenter {
 
             @Override
             public void onComplete() {
-                ACache.getDefault().put(C.COMING_SOON, movies);
-                isACache = true;
-                movieView.setAdapter(movies, C.COMING_SOON);
+
             }
         };
         modelImp.getComingSoon(observer, start, count);
@@ -242,18 +248,57 @@ public class MoviePresenterImp implements MoviePresenter {
     }
 
     @Override
-    public void getMovieFromLocal() {
-        Log.d("123456", ""+(ArrayList<Movie>) ACache.getDefault().getAsObject(C.TOP250));
-        movieView.setAdapter((ArrayList<Movie>) ACache.getDefault().getAsObject(C.TOP250), C.TOP250);
-        movieView.setAdapter((ArrayList<Movie>) ACache.getDefault().getAsObject(C.IN_THEATERS), C.IN_THEATERS);
-        movieView.setAdapter((ArrayList<Movie>) ACache.getDefault().getAsObject(C.COMING_SOON), C.COMING_SOON);
-        movieView.setUxBoxAdapter((ArrayList<USMovie>) ACache.getDefault().getAsObject(C.US_BOX));
-        movieView.setAdapter((ArrayList<Movie>) ACache.getDefault().getAsObject(C.NEW_MOVIES), C.NEW_MOVIES);
+    public boolean getTopMovieFromLocal() {
+        ArrayList<Movie> movies = (ArrayList<Movie>) ACache.getDefault().getAsObject(C.TOP250);
+        if (movies != null) {
+            movieView.setAdapter(movies, C.TOP250);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public boolean isACache() {
-        return false;
+    public boolean getInTheaterFromLocal() {
+        ArrayList<Movie> movies = (ArrayList<Movie>) ACache.getDefault().getAsObject(C.IN_THEATERS);
+        if (movies != null) {
+            movieView.setAdapter(movies, C.IN_THEATERS);
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    @Override
+    public boolean getComingFromLocal() {
+        ArrayList<Movie> movies = (ArrayList<Movie>) ACache.getDefault().getAsObject(C.COMING_SOON);
+        if (movies != null) {
+            movieView.setAdapter(movies, C.COMING_SOON);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean getUsBoxFromLocal() {
+        ArrayList<USMovie> usMovies = (ArrayList<USMovie>) ACache.getDefault().getAsObject(C.US_BOX);
+        if (usMovies != null) {
+            movieView.setUxBoxAdapter(usMovies);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean getNewMovieFromLocal() {
+        ArrayList<Movie> movies = (ArrayList<Movie>) ACache.getDefault().getAsObject(C.NEW_MOVIES);
+        if (movies != null) {
+            movieView.setAdapter(movies, C.NEW_MOVIES);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.a14512.nimd_douban.modules.movie.view;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -27,7 +26,6 @@ import java.util.ArrayList;
  */
 
 public class SearchActivity extends BaseSwipeBackActivity implements MovieView {
-    private AppBarLayout appbarlayout;
     private EditText edt_movie;
     private RecyclerView recyclerView;
     private MoreMovieAdapter movieAdapter;
@@ -46,7 +44,6 @@ public class SearchActivity extends BaseSwipeBackActivity implements MovieView {
         setStatusBarColor(R.color.mainToolbar);
         ImageView back = (ImageView) findViewById(R.id.img_toolbar);
         TextView tv_title = (TextView) findViewById(R.id.tv_title);
-        appbarlayout = (AppBarLayout) findViewById(R.id.appbarlayout);
         edt_movie = (EditText) findViewById(R.id.edt_movie);
         Button btn_search = (Button) findViewById(R.id.btn_search);
         recyclerView = (RecyclerView) findViewById(R.id.movie_recycler_view);

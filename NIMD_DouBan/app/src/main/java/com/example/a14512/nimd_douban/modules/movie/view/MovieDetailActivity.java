@@ -1,8 +1,6 @@
 package com.example.a14512.nimd_douban.modules.movie.view;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +22,6 @@ import java.util.ArrayList;
 
 public class MovieDetailActivity extends BaseSwipeBackActivity implements MovieView {
     private TextView tv_title;
-    private AppBarLayout appbarlayout;
     private ImageView iv_film;
     private TextView tv_rating;
     private TextView tv_rating_num;
@@ -33,7 +30,6 @@ public class MovieDetailActivity extends BaseSwipeBackActivity implements MovieV
     private TextView tv_film_country;
     private TextView tv_film_name;
     private TextView tv_description;
-    private RecyclerView recyclerview;
     private TextView tv_more_info;
 
     private String id;
@@ -52,7 +48,6 @@ public class MovieDetailActivity extends BaseSwipeBackActivity implements MovieV
         setStatusBarColor(R.color.mainToolbar);
         ImageView img_toolbar = (ImageView) findViewById(R.id.img_toolbar);
         tv_title = (TextView) findViewById(R.id.tv_title);
-        appbarlayout = (AppBarLayout) findViewById(R.id.appbarlayout);
         iv_film = (ImageView) findViewById(R.id.iv_film);
         tv_rating = (TextView) findViewById(R.id.tv_rating);
         tv_rating_num = (TextView) findViewById(R.id.tv_rating_num);
@@ -61,7 +56,6 @@ public class MovieDetailActivity extends BaseSwipeBackActivity implements MovieV
         tv_film_country = (TextView) findViewById(R.id.tv_film_country);
         tv_film_name = (TextView) findViewById(R.id.tv_film_name);
         tv_description = (TextView) findViewById(R.id.tv_description);
-        recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
         tv_more_info = (TextView) findViewById(R.id.tv_more_info);
 
         getData();
@@ -93,9 +87,11 @@ public class MovieDetailActivity extends BaseSwipeBackActivity implements MovieV
         tv_rating_num.setText(movieDetail.getRatings_count() +"人评分");
         tv_film_name.setText(movieDetail.getOriginal_title());
         tv_date_and_film_time.setText(movieDetail.getYear() + "年");
-        tv_film_type.setText(movieDetail.getGenres().get(0)
-                + "/" + movieDetail.getGenres().get(1)
-                + "/" + movieDetail.getGenres().get(2));
+        StringBuilder filmType = new StringBuilder();
+        for (String string : movieDetail.getGenres()) {
+            filmType = filmType.append(string).append("/");
+        }
+        tv_film_type.setText(filmType);
         tv_film_country.setText(movieDetail.getCountries().get(0));
         tv_description.setText(movieDetail.getSummary());
         tv_more_info.setOnClickListener(v -> startIntentActivity(this, new WebActivity(),

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:background="#f0f0f0">
+    android:background="@drawable/screen">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,109 +14,118 @@
         android:orientation="vertical">
 
         <ImageButton
-
             android:id="@+id/head_portrait"
             android:layout_width="78dp"
             android:layout_height="78dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            android:src="@mipmap/icon"/>
+            android:background="@mipmap/icon"/>
 
         <TextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="登录"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:text="@string/tv_login"
             android:textSize="16sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="32dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_extension"
-            android:layout_marginLeft="16dp"/>
+            android:layout_marginLeft="32dp"/>
 
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:text="第一个设置"
-            android:textSize="19sp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@android:color/white"
+            android:text="@string/about_us"
+            android:textSize="20sp"
             android:onClick="click_1"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_explore"
-            android:layout_marginLeft="16dp"/>
+            android:layout_marginLeft="32dp"/>
 
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:text="第二个设置"
-            android:textSize="19sp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@android:color/white"
+            android:text="@string/user_self"
+            android:textSize="20sp"
             android:onClick="click_2"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_build"
-            android:layout_marginLeft="16dp"/>
+            android:layout_marginLeft="32dp"/>
 
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:text="第三个设置"
-            android:textSize="19sp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@android:color/white"
+            android:text="@string/acache"
+            android:textSize="20sp"
             android:onClick="click_2"
             />
 
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_settings"
-            android:layout_marginLeft="16dp"/>
+            android:layout_marginLeft="32dp"/>
 
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:text="第四个设置"
-            android:textSize="19sp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@android:color/white"
+            android:text="@string/settings"
+            android:textSize="20sp"
             android:onClick="click_2"/>
 
     </LinearLayout>

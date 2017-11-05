@@ -21,8 +21,15 @@ public interface MoviePresenter {
 
     void getMovieDetail(String id);
 
-    void getMovieFromLocal();
+    boolean getTopMovieFromLocal();
 
-    boolean isACache();
+    boolean getInTheaterFromLocal();
+
+    boolean getComingFromLocal();
+
+    boolean getUsBoxFromLocal();
+
+    boolean getNewMovieFromLocal();
+
 
 }
